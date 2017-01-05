@@ -8,5 +8,8 @@ _A simple, MVC-like helper for building RAD Restful apps with [Unicorn](https://
 ## Installation
 `composer require andrewbreksa/restful-unicorn`
 
+## Summary
+This helper for [Unicorn](https://github.com/abreksa4/Unicorn) allows for the easy creation of Restful controller classes with automagic route mapping. Simply extend `AbstractRestfulController` and pass an Application instance and an array of class names to `AbstractRestfulController::bootstrapControllers()` to get up and running.
+
 ## Notes
 See the test code and content of `public` for a better idea of how to use this helper. Better documentation is to follow.
