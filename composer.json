@@ -1,6 +1,6 @@
 {
   "name": "andrewbreksa/restful-unicorn",
-  "description": "A simple, MVC-like helper for building RAD Restful apps with Unicorn",
+  "description": "A simple MVC-like helper for building RAD Restful apps with Unicorn",
   "minimum-stability": "dev",
   "license": "MIT",
   "version": "1.0.0",
