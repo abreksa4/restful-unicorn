@@ -1,8 +1,10 @@
 {
   "name": "andrewbreksa/restful-unicorn",
-  "description": "",
+  "description": "A simple, MVC-like helper for building RAD Restful apps with Unicorn",
   "minimum-stability": "dev",
-  "license": "proprietary",
+  "license": "MIT",
+  "version": "1.0.0",
+  "type": "library",
   "authors": [
     {
       "name": "Andrew Breksa",
