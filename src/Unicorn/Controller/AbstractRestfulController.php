@@ -178,26 +178,27 @@ abstract class AbstractRestfulController implements RestfulControllerInterface
         }
     }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function getRoutes() {
-		$routes = [];
-		foreach ($this->getAllowedMethods(FALSE) as $method) {
-			$routes[] = [
-				'type'   => 'collection',
-				'method' => $method,
-				'route'  => $this->getRoute(),
-			];
-		}
-		foreach ($this->getAllowedMethods(TRUE) as $method) {
-			$routes[] = [
-				'type'   => 'entity',
-				'method' => $method,
-				'route'  => $this->getRoute() . '/{id:' . ($this->getEntityIdRegex() == NULL ? '[0-9]+' : $this->getEntityIdRegex()) . '}',
-			];
-		}
+    /**
+     * @inheritdoc
+     */
+    public function getRoutes()
+    {
+        $routes = [];
+        foreach ($this->getAllowedMethods(false) as $method) {
+            $routes[] = [
+                'type'   => 'collection',
+                'method' => $method,
+                'route'  => $this->getRoute(),
+            ];
+        }
+        foreach ($this->getAllowedMethods(true) as $method) {
+            $routes[] = [
+                'type'   => 'entity',
+                'method' => $method,
+                'route'  => $this->getRoute() . '/{id:' . ($this->getEntityIdRegex() == null ? '[0-9]+' : $this->getEntityIdRegex()) . '}',
+            ];
+        }
 
-		return $routes;
-	}
+        return $routes;
+    }
 }

@@ -101,8 +101,8 @@ interface RestfulControllerInterface
      */
     public function execute(ServerRequestInterface $request, ResponseInterface $response, array $params = []);
 
-	/**
-	 * Returns as array of all the routes this controller supports in the form of an associative array of 'type', 'method' & 'route' pairs
-	 */
-	public function getRoutes();
+    /**
+     * Returns as array of all the routes this controller supports in the form of an associative array of 'type', 'method' & 'route' pairs
+     */
+    public function getRoutes();
 }

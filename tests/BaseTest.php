@@ -99,45 +99,46 @@ class BaseTest extends PHPUnit_Framework_TestCase
         self::assertEquals('GET', $body['method'], 'method not correct in response body');
     }
 
-	public function testGetRoutes() {
-		$app = self::$app;
-		$request = new \Zend\Diactoros\ServerRequest();
-		$request = $request->withMethod("GET")->withUri(new \Zend\Diactoros\Uri("http://www.example.com/tests"));
-		$app->setRequest($request);
-		$app->run();
-		/**
-		 * @var $testController TestController
-		 */
-		$testController = $app->getContainer()->get(TestController::class);
-		self::assertNotEmpty($testController->getRoutes(), get_class($testController) . '->getRoutes() is empty');
-		$routes = [
-			[
-				'type'   => 'collection',
-				'method' => 'OPTIONS',
-				'route'  => $testController->getRoute(),
-			],
-			[
-				'type'   => 'collection',
-				'method' => 'GET',
-				'route'  => $testController->getRoute(),
-			],
-			[
-				'type'   => 'entity',
-				'method' => 'GET',
-				'route'  => $testController->getRoute() . '/{id:' . ($testController->getEntityIdRegex() == NULL ? '[0-9]+' : $testController->getEntityIdRegex()) . '}',
-			],
-			[
-				'type'   => 'entity',
-				'method' => 'OPTIONS',
-				'route'  => $testController->getRoute() . '/{id:' . ($testController->getEntityIdRegex() == NULL ? '[0-9]+' : $testController->getEntityIdRegex()) . '}',
-			],
-		];
-		foreach ($routes as $route) {
-			self::assertTrue(in_array($route, $testController->getRoutes()), get_class($testController) . '->getRoutes() is does not contain ' . json_encode($route));
-		}
-	}
+    public function testGetRoutes()
+    {
+        $app = self::$app;
+        $request = new \Zend\Diactoros\ServerRequest();
+        $request = $request->withMethod("GET")->withUri(new \Zend\Diactoros\Uri("http://www.example.com/tests"));
+        $app->setRequest($request);
+        $app->run();
+        /**
+         * @var $testController TestController
+         */
+        $testController = $app->getContainer()->get(TestController::class);
+        self::assertNotEmpty($testController->getRoutes(), get_class($testController) . '->getRoutes() is empty');
+        $routes = [
+            [
+                'type'   => 'collection',
+                'method' => 'OPTIONS',
+                'route'  => $testController->getRoute(),
+            ],
+            [
+                'type'   => 'collection',
+                'method' => 'GET',
+                'route'  => $testController->getRoute(),
+            ],
+            [
+                'type'   => 'entity',
+                'method' => 'GET',
+                'route'  => $testController->getRoute() . '/{id:' . ($testController->getEntityIdRegex() == null ? '[0-9]+' : $testController->getEntityIdRegex()) . '}',
+            ],
+            [
+                'type'   => 'entity',
+                'method' => 'OPTIONS',
+                'route'  => $testController->getRoute() . '/{id:' . ($testController->getEntityIdRegex() == null ? '[0-9]+' : $testController->getEntityIdRegex()) . '}',
+            ],
+        ];
+        foreach ($routes as $route) {
+            self::assertTrue(in_array($route, $testController->getRoutes()), get_class($testController) . '->getRoutes() is does not contain ' . json_encode($route));
+        }
+    }
 
-	public function tearDown()
+    public function tearDown()
     {
         self::$app = null;
     }
