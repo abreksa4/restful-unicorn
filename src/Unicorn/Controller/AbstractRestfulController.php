@@ -177,4 +177,27 @@ abstract class AbstractRestfulController implements RestfulControllerInterface
             $application->getContainer()->share($controller, $instance);
         }
     }
+
+	/**
+	 * @inheritdoc
+	 */
+	public function getRoutes() {
+		$routes = [];
+		foreach ($this->getAllowedMethods(FALSE) as $method) {
+			$routes[] = [
+				'type'   => 'collection',
+				'method' => $method,
+				'route'  => $this->getRoute(),
+			];
+		}
+		foreach ($this->getAllowedMethods(TRUE) as $method) {
+			$routes[] = [
+				'type'   => 'entity',
+				'method' => $method,
+				'route'  => $this->getRoute() . '/{id:' . ($this->getEntityIdRegex() == NULL ? '[0-9]+' : $this->getEntityIdRegex()) . '}',
+			];
+		}
+
+		return $routes;
+	}
 }
