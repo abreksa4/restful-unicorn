@@ -155,7 +155,7 @@ abstract class AbstractRestfulController implements RestfulControllerInterface
     }
 
     /**
-     * Takes the provided application and array of controller class names and adds them to the Container and runs bootsstrap() on each one
+     * Takes the provided application and array of controller class names and adds them to the Container and runs bootstrap() on each one
      *
      * @param Application $application
      * @param string[] $controllers
